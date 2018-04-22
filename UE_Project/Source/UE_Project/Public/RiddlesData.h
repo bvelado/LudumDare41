@@ -6,26 +6,18 @@
 #include "Engine/DataAsset.h"
 #include "RiddlesData.generated.h"
 
-USTRUCT()
-struct FItemInfo {
-
-	GENERATED_USTRUCT_BODY()
-		
-		UPROPERTY(EditAnywhere)
-		FString riddleContent;
-
-		UPROPERTY(EditAnywhere)
-		FString riddleAnswers;
-};
-
 /**
  * 
  */
-UCLASS()
+UCLASS(Blueprintable)
 class UE_PROJECT_API URiddlesData : public UDataAsset
 {
 	GENERATED_BODY()
 
-	UPROPERTY(EditAnywhere)
-	TArray<FItemInfo> items;
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FText riddleContent;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	TArray<FText> riddleAnswers;
 };
